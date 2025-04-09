@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KS Coloring</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        /* Custom CSS */
+        .header {
+            min-height: 100vh;
+            width: 100%;
+            background-image: linear-gradient(rgba(106, 89, 205, 0.7), rgba(106, 89, 205, 0.7)),
+                              url('https://images.pexels.com/photos/1170412/pexels-photo-1170412.jpeg');
+            background-position: center;
+            background-size: cover;
+            position: relative;
+            box-shadow: #6a5acd;
+        }
+
+        .nav-links ul li::after {
+            content: '';
+            width: 0%;
+            height: 2px;
+            background: #6a5acd;
+            display: block;
+            margin: auto;
+            transition: 0.3s;
+        }
+
+        .nav-links ul li:hover::after {
+            width: 100%;
+        }
+
+        /* Color Collection Hover Effects */
+        .color-col {
+            transition: all 0.3s ease;
+        }
+        .color-col:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 10px 20px rgba(106, 89, 205, 0.7);
+        }
+
+        /* Testimonial Cards */
+        .testimonials-col {
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 20px rgba(106, 89, 205, 0.7);
+        }
+        .testimonials-col:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(106, 89, 205, 0.7);
+        }
+
+       
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <section class="header" data-aos="fade" data-aos-duration="1000">
+        <nav class="flex justify-between items-center p-4 bg-white bg-opacity-90">
+            <div class="nav-left">
+                <a href="login.html" class="text-purple-600 hover:text-purple-800 transition">
+                    <i class="fas fa-user mr-1"></i> LOGIN
+                </a>
+            </div>
+            <a href="index.html" class="text-2xl font-bold text-purple-600">KS Coloring</a>
+            <div class="nav-links hidden md:block">
+                <ul class="flex space-x-6">
+                    <li><a href="login.html" class="text-gray-700 hover:text-purple-600 transition">LOGIN</a></li>
+                    <li><a href="index.html" class="text-purple-600 font-medium">HOME</a></li>
+                    <li><a href="product.html" class="text-gray-700 hover:text-purple-600 transition">PRODUCT</a></li>
+                    <li><a href="about.html" class="text-gray-700 hover:text-purple-600 transition">ABOUT</a></li>
+                    <li><a href="contact.html" class="text-gray-700 hover:text-purple-600 transition">CONTACT</a></li>
+                </ul>
+            </div>
+            <button class="md:hidden text-purple-600 text-2xl">
+                <i class="fas fa-bars"></i>
+            </button>
+        </nav>
+
+        <div class="text-box absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center text-white">
+            <h1 class="text-5xl md:text-7xl font-bold mb-6" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">Your Dream Colors Await You!</h1>
+            <p class="text-lg mb-8 font-bold mb-6" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200" style="font-size: 20px;" >Transform your home with vibrant colors using advanced AI visualization tools and a wide selection of premium paints!</p>
+            <a href="product.html" class="hero-btn bg-white text-purple-600 hover:bg-purple-600 hover:text-white transition duration-300 px-8 py-3 rounded-full font-medium inline-block" data-aos="fade-up" data-aos-duration="800" data-aos-delay="300">
+                Get Started
+            </a>
+        </div>
+    </section>
+
+    <!-- Satisfaction Section -->
+    <section class="Satisfaction py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h1 class="text-4xl font-bold text-center mb-4">100% Satisfaction</h1>
+            <p class="text-center text-gray-600 mb-2">Customer Rate</p>
+            <h2 class="text-3xl font-bold text-center mb-4">500+ Colors</h2>
+            <p class="text-center text-gray-600 mb-12">Quality Selection</p>
+
+            <div class="row grid md:grid-cols-3 gap-8">
+                <div class="Satisfaction-col bg-white p-8 rounded-lg shadow-md hover:shadow-lg transition duration-300"  style="box-shadow: 0 10px 20px rgba(106, 89, 205, 0.7);"data-aos="fade-up" data-aos-duration="600">
+                    <i class="fas fa-home text-purple-600 text-4xl mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-4">1. Transform Your Space with KS Coloring</h3>
+                    <p class="text-gray-600">Discover premium-quality home paints that bring elegance, durability, and vibrant colors to your walls.</p>
+                </div>
+                <div class="Satisfaction-col bg-white p-8 rounded-lg shadow-md hover:shadow-lg transition duration-300" style="box-shadow: 0 10px 20px rgba(106, 89, 205, 0.7);">
+                    <i class="fas fa-robot text-purple-600 text-4xl mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-4">2. Unleash Creativity with AI-Powered Color Selection</h3>
+                    <p class="text-gray-600">Our advanced AI tools help you visualize and choose the perfect shades for your dream home effortlessly.</p>
+                </div>
+                <div class="Satisfaction-col bg-white p-8 rounded-lg shadow-md hover:shadow-lg transition duration-300" style="box-shadow: 0 10px 20px rgba(106, 89, 205, 0.7);">
+                    <i class="fas fa-shipping-fast text-purple-600 text-4xl mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-4">3. Seamless Shopping & Hassle-Free Experience</h3>
+                    <p class="text-gray-600">From personalized recommendations to easy order tracking, KS Coloring ensures a smooth and delightful painting journey.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Color Collection -->
+    <section class="color-section">
+        <div class="section-container">
+            <h1>Our Color Collection</h1>
+            <p class="section-description">Bringing Colors to Life – Perfect Shades for Every Space!</p>
+            
+            <div class="color-grid">
+                <div class="color-card" data-aos="zoom-in" data-aos-duration="600" data-aos-easing="ease-out-cubic">
+                    <img src="https://images.pexels.com/photos/628281/pexels-photo-628281.jpeg" alt="Wall Paint Colors">
+                    <div class="color-overlay">
+                        <h3>SHADES</h3>
+                    </div>
+                </div>
+                <div class="color-card" data-aos="zoom-in" data-aos-duration="600" data-aos-easing="ease-out-cubic">
+                    <img src="https://images.pexels.com/photos/1571462/pexels-photo-1571462.jpeg" alt="Paint Swatches">
+                    <div class="color-overlay">
+                        <h3>PAINTS</h3>
+                    </div>
+                </div>
+                <div class="color-card" data-aos="zoom-in" data-aos-duration="600" data-aos-easing="ease-out-cubic">
+                    <img src="https://images.pexels.com/photos/1571463/pexels-photo-1571463.jpeg" alt="Paint Application">
+                    <div class="color-overlay">
+                        <h3>BRUSHES</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <style>
+        /* Color Section Styles */
+        .color-section {
+            padding: 80px 0;
+            background: white;
+        }
+        
+        .section-container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .color-section h1 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+        
+        .section-description {
+            text-align: center;
+            color: #666;
+            margin-bottom: 3rem;
+            font-size: 1.1rem;
+        }
+        
+        .color-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .color-card {
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(106, 89, 205, 0.7);
+            transition: transform 0.3s ease;
+        }
+        
+        .color-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .color-card img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .color-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(106, 89, 205, 0);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: background 0.3s ease;
+        }
+        
+        .color-card:hover .color-overlay {
+            background: rgba(106, 89, 205, 0.7);
+        }
+        
+        .color-overlay h3 {
+            color: white;
+            font-size: 1.8rem;
+            font-weight: 500;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .color-card:hover .color-overlay h3 {
+            opacity: 1;
+        }
+    </style>
+
+    <!-- Facilities Section -->
+    <section class="Facalities py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h1 class="text-4xl font-bold text-center mb-4">Our Facilities</h1>
+            <p class="text-center text-gray-600 max-w-3xl mx-auto mb-12">
+                At KS Coloring, we believe every home has a story, and the right colors bring it to life. Explore a stunning range of high-quality paints designed to transform your space with elegance and vibrancy.
+            </p>
+
+            <div class="row grid md:grid-cols-3 gap-8">
+                <div class="Facalities-col bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300" data-aos="flip-up" data-aos-duration="600">
+                    <img src="https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg" alt="Color Consultation" class="w-full h-48 object-cover rounded-lg mb-4">
+                    <i class="fas fa-palette text-purple-600 text-3xl mb-3"></i>
+                    <h3 class="text-xl font-semibold mb-2">Color Consultation</h3>
+                    <p class="text-gray-600">Expert advice on choosing the perfect color schemes.</p>
+                </div>
+                <div class="Facalities-col bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                    <img src="https://images.pexels.com/photos/380768/pexels-photo-380768.jpeg" alt="On-Site Assistant" class="w-full h-48 object-cover rounded-lg mb-4">
+                    <i class="fas fa-user-tie text-purple-600 text-3xl mb-3"></i>
+                    <h3 class="text-xl font-semibold mb-2">On-Site Assistant</h3>
+                    <p class="text-gray-600">Expert visits for color selection and application guidance.</p>
+                </div>
+                <div class="Facalities-col bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                    <img src="https://images.pexels.com/photos/1080696/pexels-photo-1080696.jpeg" alt="Paint Packages" class="w-full h-48 object-cover rounded-lg mb-4">
+                    <i class="fas fa-box-open text-purple-600 text-3xl mb-3"></i>
+                    <h3 class="text-xl font-semibold mb-2">Paint Packages</h3>
+                    <p class="text-gray-600">Bundled services for complete home transformations.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials py-20">
+        <div class="container mx-auto px-4">
+            <h1 class="text-4xl font-bold text-center mb-4">Hear from Our Happy Customers!</h1>
+            <p class="text-center text-gray-600 mb-12">Join our community of satisfied customers who transformed their spaces with KS Coloring expertise.</p>
+            
+            <div class="testimonials-slider">
+                <div class="testimonials-col bg-white p-6 rounded-lg border border-gray-200 flex items-start" data-aos="fade-up" data-aos-duration="600">
+                    <img src="https://images.pexels.com/photos/3768257/pexels-photo-3768257.jpeg" alt="Customer" class="w-16 h-16 rounded-full object-cover mr-4">
+                    <div>
+                        <p class="text-gray-600 mb-3">Loved the entire experience! The website is super user-friendly, and the color preview feature helped me visualize my home perfectly.</p>
+                        <h3 class="font-semibold">Vihaan Sharma</h3>
+                        <div class="flex mt-2">
+                            <i class="fas fa-star text-yellow-500"></i>
+                            <i class="fas fa-star text-yellow-500"></i>
+                            <i class="fas fa-star text-yellow-500"></i>
+                            <i class="fas fa-star text-yellow-500"></i>
+                            <i class="fas fa-star-half-alt text-yellow-500"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonials-col bg-white p-6 rounded-lg border border-gray-200 flex items-start">
+                    <img src="https://images.pexels.com/photos/3768257/pexels-photo-3768257.jpeg" alt="Customer" class="w-16 h-16 rounded-full object-cover mr-4">
+                    <div>
+                        <p class="text-gray-600 mb-3">I struggled to pick the right colors, but KS Coloring's interactive tools made it so easy. My bedroom looks stunning now!</p>
+                        <h3 class="font-semibold">Sanya Kapoor</h3>
+                        <div class="flex mt-2">
+                            <i class="fas fa-star text-yellow-500"></i>
+                            <i class="fas fa-star text-yellow-500"></i>
+                            <i class="fas fa-star text-yellow-500"></i>
+                            <i class="fas fa-star text-yellow-500"></i>
+                            <i class="fas fa-star text-yellow-500"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="cta py-32 bg-cover bg-center" style="background-image: linear-gradient(rgba(106, 89, 205, 0.7), rgba(106, 89, 205, 0.7)), url('https://images.pexels.com/photos/1866149/pexels-photo-1866149.jpeg')">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-4xl font-bold text-white mb-8">For any Query <br> Anywhere From The India</h1>
+            <a href="contact.html" class="hero-btn bg-white text-purple-600 hover:bg-purple-600 hover:text-white transition duration-300 px-8 py-3 rounded-full font-medium inline-block">
+                CONTACT US
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <section class="footer py-12 bg-gradient-to-r from-purple-600 to-purple-800 text-white">
+        <div class="container mx-auto px-4 text-center">
+            <h4 class="text-2xl font-bold mb-6">About Us</h4>
+            <p class="max-w-2xl mx-auto mb-8">
+                At KS Coloring, we bring creativity to life with inspiring designs and vibrant colors. Our mission is to make every space beautiful with quality paints and personalized solutions. Transform your home with KS Coloring – where colors tell your story.
+            </p>
+            <div class="icons flex justify-center space-x-6 mb-6">
+                <a href="#" class="text-white hover:text-gray-200 text-2xl transition"><i class="fab fa-facebook"></i></a>
+                <a href="#" class="text-white hover:text-gray-200 text-2xl transition"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="text-white hover:text-gray-200 text-2xl transition"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="text-white hover:text-gray-200 text-2xl transition"><i class="fab fa-linkedin"></i></a>
+            </div>
+            <p>Made with <i class="fas fa-heart text-red-400"></i> by Colors Edition</p>
+        </div>
+    </section>
+
+  
+
+    <!-- JavaScript Libraries -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    
+    <script>
+        // Initialize AOS animations
+        AOS.init({
+            duration: 800,
+            easing: 'ease-out-cubic',
+            once: false,
+            mirror: true
+        });
+
+        // Initialize Slick Carousel
+        $(document).ready(function(){
+            $('.testimonials-slider').slick({
+                dots: true,
+                infinite: true,
+                speed: 500,
+                slidesToShow: 2,
+                slidesToScroll: 1,
+                responsive: [{
+                    breakpoint: 768,
+                    settings: {
+                        slidesToShow: 1
+                    }
+                }]
+            });
+        });
+
+        // Mobile menu toggle
+        document.querySelector('.fa-bars').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('hidden');
+        });
+
+        
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+<!---------chatbot--------->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Assistant</title>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #4285f4;
+            --secondary-color: #34a853;
+            --accent-color: #ea4335;
+            --light-color: #f8f9fa;
+            --dark-color: #202124;
+        }
+        
+        .chatbot-container {
+            position: fixed;
+            bottom: 100px;
+            right: 30px;
+            width: 350px;
+            height: 500px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            transform: translateY(20px);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+        
+        .chatbot-container.active {
+            transform: translateY(0);
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .chatbot-header {
+            background: var(--primary-color);
+            color: white;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .chatbot-header h3 {
+            margin: 0;
+            font-size: 1.2rem;
+        }
+        
+        .chatbot-header button {
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+            font-size: 1.2rem;
+        }
+        
+        .chatbot-messages {
+            flex: 1;
+            padding: 15px;
+            overflow-y: auto;
+            background: #f5f5f5;
+        }
+        
+        .bot-message, .user-message {
+            margin-bottom: 15px;
+            max-width: 80%;
+            padding: 10px 15px;
+            border-radius: 18px;
+            line-height: 1.4;
+            position: relative;
+        }
+        
+        .bot-message {
+            background: white;
+            border-top-left-radius: 0;
+            align-self: flex-start;
+        }
+        
+        .user-message {
+            background: var(--primary-color);
+            color: white;
+            border-top-right-radius: 0;
+            margin-left: auto;
+        }
+        
+        .chatbot-input {
+            display: flex;
+            padding: 10px;
+            background: white;
+            border-top: 1px solid #eee;
+        }
+        
+        .chatbot-input input {
+            flex: 1;
+            padding: 10px 15px;
+            border: 1px solid #ddd;
+            border-radius: 30px;
+            outline: none;
+            font-size: 0.9rem;
+        }
+        
+        .chatbot-input button {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            margin-left: 10px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .chatbot-input button:hover {
+            background: var(--secondary-color);
+        }
+        
+        .chatbot-toggler {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5rem;
+            z-index: 999;
+            transition: all 0.3s;
+        }
+        
+        .chatbot-toggler:hover {
+            background: var(--secondary-color);
+            transform: scale(1.1);
+        }
+        
+        .color-palette {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            margin-top: 10px;
+        }
+        
+        .color-box {
+            width: 30px;
+            height: 30px;
+            border-radius: 5px;
+            cursor: pointer;
+            border: 1px solid #ddd;
+            transition: transform 0.2s;
+        }
+        
+        .color-box:hover {
+            transform: scale(1.1);
+        }
+        
+        .suggestions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 10px;
+        }
+        
+        .suggestion-btn {
+            background: #e0e0e0;
+            border: none;
+            border-radius: 15px;
+            padding: 5px 10px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        
+        .suggestion-btn:hover {
+            background: #d0d0d0;
+        }
+        
+        .typing-indicator {
+            display: flex;
+            padding: 10px 15px;
+        }
+        
+        .typing-dot {
+            width: 8px;
+            height: 8px;
+            background: #ccc;
+            border-radius: 50%;
+            margin: 0 2px;
+            animation: typingAnimation 1.4s infinite ease-in-out;
+        }
+        
+        .typing-dot:nth-child(1) { animation-delay: 0s; }
+        .typing-dot:nth-child(2) { animation-delay: 0.2s; }
+        .typing-dot:nth-child(3) { animation-delay: 0.4s; }
+        
+        @keyframes typingAnimation {
+            0%, 60%, 100% { transform: translateY(0); }
+            30% { transform: translateY(-5px); }
+        }
+    </style>
+</head>
+<body>
+    <div class="chatbot-container" id="chatbotContainer">
+        <div class="chatbot-header">
+            <h3>Color Assistant</h3>
+            <button id="closeChatbot"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="chatbot-messages" id="chatbotMessages">
+            <div class="bot-message">
+                <p>Hello! I'm your Color Assistant. I can help you with:</p>
+                <ul>
+                    <li>Color palette suggestions</li>
+                    <li>Color theory explanations</li>
+                    <li>Hex/RGB conversions</li>
+                    <li>Color combinations</li>
+                </ul>
+                <div class="suggestions">
+                    <button class="suggestion-btn" data-query="Show me warm color palettes">Warm colors</button>
+                    <button class="suggestion-btn" data-query="Suggest cool color combinations">Cool colors</button>
+                    <button class="suggestion-btn" data-query="Explain complementary colors">Color theory</button>
+                </div>
+            </div>
+        </div>
+        <div class="chatbot-input">
+            <input type="text" id="userInput" placeholder="Ask about colors...">
+            <button id="sendMessage"><i class="fas fa-paper-plane"></i></button>
+        </div>
+    </div>
+    <button class="chatbot-toggler" id="chatbotToggler">
+        <i class="fas fa-palette"></i>
+    </button>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const chatbotContainer = document.getElementById('chatbotContainer');
+            const chatbotToggler = document.getElementById('chatbotToggler');
+            const closeChatbot = document.getElementById('closeChatbot');
+            const userInput = document.getElementById('userInput');
+            const sendMessage = document.getElementById('sendMessage');
+            const chatbotMessages = document.getElementById('chatbotMessages');
+            
+            // Toggle chatbot visibility
+            chatbotToggler.addEventListener('click', () => {
+                chatbotContainer.classList.toggle('active');
+            });
+            
+            closeChatbot.addEventListener('click', () => {
+                chatbotContainer.classList.remove('active');
+            });
+            
+            // Send message on button click
+            sendMessage.addEventListener('click', sendUserMessage);
+            
+            // Send message on Enter key
+            userInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    sendUserMessage();
+                }
+            });
+            
+            // Quick suggestion buttons
+            document.querySelectorAll('.suggestion-btn').forEach(button => {
+                button.addEventListener('click', function() {
+                    userInput.value = this.getAttribute('data-query');
+                    sendUserMessage();
+                });
+            });
+            
+            function sendUserMessage() {
+                const message = userInput.value.trim();
+                if (message === '') return;
+                
+                // Add user message to chat
+                addMessage(message, 'user');
+                userInput.value = '';
+                
+                // Show typing indicator
+                showTypingIndicator();
+                
+                // Simulate bot response after a delay
+                setTimeout(() => {
+                    removeTypingIndicator();
+                    generateBotResponse(message);
+                }, 1000 + Math.random() * 2000);
+            }
+            
+            function addMessage(text, sender) {
+                const messageDiv = document.createElement('div');
+                messageDiv.className = `${sender}-message`;
+
+                const messageContent = document.createElement('p');
+                messageContent.textContent = text;
+                messageDiv.appendChild(messageContent);
+                
+                // Special handling for color palettes
+                if (sender === 'bot' && text.includes('palette')) {
+                    const palette = generateColorPalette();
+                    const paletteDiv = document.createElement('div');
+                    paletteDiv.className = 'color-palette';
+                    
+                    palette.forEach(color => {
+                        const colorBox = document.createElement('div');
+                        colorBox.className = 'color-box';
+                        colorBox.style.backgroundColor = color;
+                        colorBox.title = color;
+                        paletteDiv.appendChild(colorBox);
+                    });
+                    
+                    messageDiv.appendChild(paletteDiv);
+                }
+                
+                chatbotMessages.appendChild(messageDiv);
+                chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+            }
+            
+            function showTypingIndicator() {
+                const typingDiv = document.createElement('div');
+                typingDiv.className = 'typing-indicator';
+                typingDiv.id = 'typingIndicator';
+                
+                for (let i = 0; i < 3; i++) {
+                    const dot = document.createElement('div');
+                    dot.className = 'typing-dot';
+                    typingDiv.appendChild(dot);
+                }
+                
+                chatbotMessages.appendChild(typingDiv);
+                chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+            }
+            
+            function removeTypingIndicator() {
+                const typingIndicator = document.getElementById('typingIndicator');
+                if (typingIndicator) {
+                    typingIndicator.remove();
+                }
+            }
+            
+            function generateBotResponse(userMessage) {
+                const lowerMessage = userMessage.toLowerCase();
+                let response = '';
+                let includePalette = false;
+                
+                if (lowerMessage.includes('hello') || lowerMessage.includes('hi')) {
+                    response = "Hello there! How can I assist you with colors today?";
+                } 
+                else if (lowerMessage.includes('warm') || lowerMessage.includes('red') || lowerMessage.includes('orange') || lowerMessage.includes('yellow')) {
+                    response = "Here's a warm color palette for you:";
+                    includePalette = true;
+                } 
+                else if (lowerMessage.includes('cool') || lowerMessage.includes('blue') || lowerMessage.includes('green') || lowerMessage.includes('purple')) {
+                    response = "Here's a cool color palette:";
+                    includePalette = true;
+                } 
+                else if (lowerMessage.includes('complement') || lowerMessage.includes('opposite')) {
+                    response = "Complementary colors are opposite each other on the color wheel. They create high contrast and vibrant looks when used together.";
+                    includePalette = true;
+                } 
+                else if (lowerMessage.includes('analogous')) {
+                    response = "Analogous colors are next to each other on the color wheel. They usually match well and create serene designs.";
+                    includePalette = true;
+                } 
+                else if (lowerMessage.includes('triad') || lowerMessage.includes('triadic')) {
+                    response = "Triadic colors are evenly spaced around the color wheel. They tend to be quite vibrant.";
+                    includePalette = true;
+                } 
+                else if (lowerMessage.includes('hex') || lowerMessage.includes('rgb')) {
+                    response = "Hex codes are 6-digit codes representing colors (e.g., #FF5733). RGB values represent red, green, and blue components (e.g., rgb(255, 87, 51)).";
+                } 
+                else if (lowerMessage.includes('theory') || lowerMessage.includes('basics')) {
+                    response = "Basic color theory includes:\n" +
+                              "1. Primary colors: Red, Blue, Yellow\n" +
+                              "2. Secondary colors: Green, Orange, Purple\n" +
+                              "3. Color harmony techniques like complementary, analogous, and triadic schemes";
+                } 
+                else {
+                    response = "I'm a color assistant. I can help you with color palettes, combinations, and theory. Could you be more specific about what you need?";
+                }
+                
+                addMessage(response, 'bot');
+                
+                // Add some quick suggestions after the response
+                if (!includePalette) {
+                    setTimeout(() => {
+                        const suggestionsDiv = document.createElement('div');
+                        suggestionsDiv.className = 'suggestions';
+                        
+                        const quickQueries = [
+                            "Show me pastel colors",
+                            "What are monochromatic colors?",
+                            "Suggest autumn color palette"
+                        ];
+                        
+                        quickQueries.forEach(query => {
+                            const btn = document.createElement('button');
+                            btn.className = 'suggestion-btn';
+                            btn.textContent = query.split(' ')[2] + '...';
+                            btn.setAttribute('data-query', query);
+                            btn.addEventListener('click', function() {
+                                userInput.value = this.getAttribute('data-query');
+                                sendUserMessage();
+                            });
+                            suggestionsDiv.appendChild(btn);
+                        });
+                        
+                        const lastMessage = document.querySelector('.bot-message:last-child');
+                        lastMessage.appendChild(suggestionsDiv);
+                        chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+                    }, 300);
+                }
+            }
+            
+            function generateColorPalette() {
+                const palettes = {
+                    warm: ['#FF6B6B', '#FFA07A', '#FFD166', '#F7B267', '#F4845F'],
+                    cool: ['#6B8F71', '#A5C4D4', '#84DCC6', '#94C5CC', '#A5D8FF'],
+                    complementary: ['#FF9F1C', '#2EC4B6', '#E71D36', '#2EC4B6', '#011627'],
+                    analogous: ['#FF9F1C', '#FFBF69', '#FFD166', '#F4A261', '#E76F51'],
+                    triadic: ['#3A86FF', '#FF006E', '#8338EC', '#FB5607', '#FFBE0B'],
+                    pastel: ['#FFD3B6', '#DCEDC1', '#A8E6CF', '#D4E09B', '#F6F4D2'],
+                    autumn: ['#8C271E', '#AB4E68', '#F6AA1C', '#BC3908', '#941B0C']
+                };
+                
+                const randomPalette = Object.keys(palettes)[Math.floor(Math.random() * Object.keys(palettes).length)];
+                return palettes[randomPalette];
+            }
+        });
+    </script>
+</body>
+</html>
