@@ -376,22 +376,41 @@
     }
 
     function checkout() {
-      if (cart.length === 0) {
-        alert("Your cart is empty. Please add some items before checkout.");
-        return;
-      }
+  if (cart.length === 0) {
+    alert("Your cart is empty. Please add some items before checkout.");
+    return;
+  }
 
-      let finalAmount = document.getElementById('final-price').textContent;
-      let confirmation = confirm(`Your total bill is $${finalAmount}. Proceed to payment?`);
+  let finalAmount = document.getElementById('final-price').textContent;
+  let confirmation = confirm(`Your total bill is $${finalAmount}. Proceed to payment?`);
 
-      if (confirmation) {
-        alert("Payment successful! Thank you for shopping.");
+  if (confirmation) {
+    fetch('/purchase', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ cart: cart })
+    })
+    .then(response => response.json())
+    .then(data => {
+      if (data.status === 'success') {
+        alert("Payment successful and purchase recorded!");
         cart = [];
         totalPrice = 0;
         updateCart();
         toggleCart();
+      } else {
+        alert("Error: " + data.message);
       }
-    }
+    })
+    .catch(err => {
+      console.error("Error during checkout:", err);
+      alert("An error occurred while processing your purchase.");
+    });
+  }
+}
+
   </script>
 </body>
 </html>

@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, session, flash
+from flask import Flask, render_template, request, redirect, url_for, session, flash, jsonify
 import sqlite3
 import os
 
@@ -15,6 +15,16 @@ def init_db():
             username TEXT UNIQUE NOT NULL,
             email TEXT UNIQUE NOT NULL,
             password TEXT NOT NULL
+        )
+    ''')
+    cursor.execute('''
+        CREATE TABLE IF NOT EXISTS purchases (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            user_id INTEGER,
+            product_name TEXT NOT NULL,
+            price REAL NOT NULL,
+            timestamp DATETIME DEFAULT CURRENT_TIMESTAMP,
+            FOREIGN KEY (user_id) REFERENCES users(id)
         )
     ''')
     conn.commit()
@@ -57,7 +67,7 @@ def login():
                 session['user_id'] = user[0]
                 session['username'] = user[1]
                 flash('Login successful.', 'success')
-                return redirect(url_for('dashboard'))
+                return redirect(url_for('product'))
             else:
                 flash('Invalid email or password.', 'danger')
     return render_template('login.html')
@@ -87,6 +97,24 @@ def contact():
 @app.route('/product')
 def product():
     return render_template('product.html')
+
+@app.route('/purchase', methods=['POST'])
+def purchase():
+    if 'user_id' not in session:
+        return jsonify({'status': 'error', 'message': 'User not logged in'}), 401
+
+    data = request.get_json()
+    user_id = session['user_id']
+    try:
+        with sqlite3.connect('users.db') as conn:
+            cursor = conn.cursor()
+            for item in data['cart']:
+                cursor.execute("INSERT INTO purchases (user_id, product_name, price) VALUES (?, ?, ?)",
+                               (user_id, item['product'], item['price']))
+            conn.commit()
+        return jsonify({'status': 'success', 'message': 'Purchase recorded'})
+    except Exception as e:
+        return jsonify({'status': 'error', 'message': str(e)}), 500
 
 # Run the application
 if __name__ == '__main__':
