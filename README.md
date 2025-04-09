@@ -5,7 +5,7 @@
 1. **Clone the Project**
    ```bash
    git clone https://github.com/aayush598/muskan-ks-coloring.git
-   cd your-project-folder
+   cd muskan-ks-coloring
    ```
 
 2. **Create & Activate Virtual Environment**
